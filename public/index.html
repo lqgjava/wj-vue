@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <!--就是一个普普通通的 html 文件，让它不平凡的是 <div id="app"></div>，下面有一行注释，，也就是说我们编写的其它的内容都将在这个 div 中展示
+    还有不普通的一点是，整个项目只有这一个 html 文件，所以这是一个 单页面应用，当我们打开这个应用，表面上可以有很多页面，实际上它们都只不过在一个 div 中-->
+    <div id="app"></div>
+    <!--构建的文件将会被自动注入-->
+    <!-- built files will be auto injected -->
+  </body>
+</html>
