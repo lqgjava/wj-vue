@@ -4,6 +4,7 @@
     <!--<img alt="Vue logo" src="./assets/logo.png">-->
     <!--<img alt="Vue logo" src="./assets/eva.jpg">-->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!--当前路由-->
     <router-view></router-view>
   </div>
 </template>

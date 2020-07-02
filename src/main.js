@@ -1,8 +1,9 @@
 /*最上面 import 了几个模块，其中 vue 模块在 node_modules 中，App 即 App.vue 里定义的组件，router 即 router 文件夹里定义的路由。*/
 import Vue from 'vue'
-import App from './App.vue'
-import router from "./router";
-import ElementUI from 'element-ui'
+import App from './App.vue'   /*导入App.vue*/
+import router from "./router/index.js";  /*导入router文件夹的index.js*/
+import store from './store/index.js'
+import ElementUI from 'element-ui' /*导入element-ui*/
 import 'element-ui/lib/theme-chalk/index.css'
 
 // 设置反向代理，前端请求默认发送到 http://localhost:8088/api
@@ -16,9 +17,27 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 
+/*这个的逻辑很简单，首先判断访问的路径是否需要登录，如果需要，判断 store 里有没有存储 user 的信息，如果存在，则放行，否则跳转到登录页面，并存储访问的页面路径（以便在登录后跳转到访问页）。*/
+router.beforeEach((to, from, next) => {
+      if (to.meta.requireAuth) {
+        if (store.state.user.username) {
+          next()
+        } else {
+          next({
+            path: 'login',
+            query: {redirect: to.fullPath}
+          })
+        }
+      } else {
+        next()
+      }
+    }
+)
+
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store,
 }).$mount('#app')
 
 
